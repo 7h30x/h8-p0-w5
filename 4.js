@@ -26,8 +26,24 @@ logic: lulus===true if score>75;  if lulus, then initiate Object Property class:
 */
 
 function graduates (students) {
- 
+  var results={};  
+
+  if (!graduates.length) {
+    return results;
+    }
+
+  for (i=0; i<students.length; i++) {
+    var student = students[i] ;
+    if(!(student.class in results)) {
+        results[student.class]=[];
+    }
+    if (student.score>75) {
+      results[student.class].push({name : student.name , score : student.score});
+    }
+  }
+  return results;  
 }
+
 
 console.log(graduates([
   {
